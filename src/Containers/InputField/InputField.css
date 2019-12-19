@@ -1,5 +1,6 @@
-.container {
-    height: 10em;
+.container 
+{
+    height: 20em;
     position: relative;
     width: 100%;
     padding: 10px;
@@ -7,12 +8,14 @@
    
 }
 h1 {
-    height: 30em;
-
+    height: 9em;
+    text-align: center
 }
-.container input,
-    h1 ,
-    p{
+.container 
+input.InputField,
+h1,
+p
+{
     margin: 0;
    
     position: absolute;
@@ -24,10 +27,10 @@ h1 {
 .container ul {
     margin-top: 33px;
     position: absolute;
-  list-style: none;
-  text-align: left; 
-  padding: 0;
-   border: 1px solid #ccc;
+     list-style: none;
+     text-align: left; 
+     padding: 0;
+     border: 1px solid #ccc;
     top: 50%;
     left: 50%;
     margin-right: -50%;
@@ -71,7 +74,39 @@ box-sizing: border-box;
     border: 1px solid red;
     background-color: #FDA49A;
 }
- .ValidationError {
+ .container p.ValidationError {
     color: red;
-    
+    margin-top : 70px;
 }
+.container button.Button 
+{
+    margin-top: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.Button {
+    background-color: #DAD735;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #966909;
+    color: #966909;
+    font-family: inherit;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    box-shadow: 2px 2px 2px #966909;
+}
+.Button:hover, .Button:active {
+    background-color: #A0DB41;
+    border: 1px solid #966909;
+    color: #966909;
+}
+.Button:disabled {
+    background-color: #C7C6C6;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+    color: #888888;
+}
+

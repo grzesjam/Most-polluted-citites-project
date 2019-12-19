@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Aux from '../../hoc/Plik/Plik'
 import classes from "./InputField.css"
-// import Cities from '../../Components/Cities/Cities'
+import Cities from '../../Components/Cities/Cities'
+
 class InputField extends Component{
-    cconstructor (props) {
+    constructor (props) {
         super(props);
         this.items = [
             'Poland',
@@ -18,8 +19,9 @@ class InputField extends Component{
              required: true
          },
          valid: true,
+         countryCode : '',
         };
-
+      
     }
     componentWillMount() {
         localStorage.getItem('text') && this.setState({
@@ -35,11 +37,12 @@ class InputField extends Component{
      checkValidity(value, rules) {
          let isValid = true
         
-        if(rules.required)
+         if(rules.required)
          {
          isValid = value.trim();
          isValid !== '' ? isValid = true : isValid = false;
          }
+
 
         const ValidItem = [...this.items];
 
@@ -54,19 +57,15 @@ class InputField extends Component{
             ...this.state
         }
         Updatedvalue.text = e.target.value;
+       
         console.log(Updatedvalue.text)
         let suggestions = [];
         if(Updatedvalue.text.length > 0) {
         const regex = new RegExp(`^${Updatedvalue.text }`, 'i');
         suggestions = this.items.sort().filter(v => regex.test(v));
         }
-           console.log(Updatedvalue)
             this.setState(()=> ({ suggestions, text: Updatedvalue.text , valid: this.checkValidity(Updatedvalue.text, Updatedvalue.validation)}))
         }
-
-
-    
-
        suggestionSelected(value) {
            this.setState(()=>({
                text:value,
@@ -86,9 +85,32 @@ class InputField extends Component{
             </ul>
         )
     }
+    onCodeChange = () => {
+
+        switch (this.state.text) {
+            case('Poland'): 
+            this.setState({countryCode: "PL"})
+            break;
+            case('Germany'):
+            this.setState({countryCode: "DE"})
+            break;
+            case('Spain'):
+            this.setState({countryCode: "ES"})
+            break;
+            case('France'):
+            this.setState({countryCode: "FR"})
+            break;
+            default:
+                this.setState({contryCode: ''})
+        
+        }
+       }
+
     
      render()
     {
+      console.log(this.state.countryCode)
+
           let validationError = null;
         if(!this.state.valid) {
             validationError = <p className = {classes.ValidationError}>Please enter a valid value!</p>
@@ -100,22 +122,34 @@ class InputField extends Component{
                 inputClasses.push(classes.Invalid)
             }
 
+
             
         const {text} = this.state;
+   
+    console.log(this.state)
         return (
             <Aux>
-                 <h1>Search for 10 most polluted cities in your country</h1>
+                
                 <div className = {classes.container}>
+                <h1>Search for 10 most polluted cities in your country</h1>
                 <input
                 value = {text}
-                onChange = {this.onTextChanged}
-                type="text" placeholder= "Enter Country" 
+                onChange =  {this.onTextChanged} 
+                type="text"
+                placeholder= "Enter Country" 
                 className = {inputClasses.join(' ')} 
                 />
+                <button 
+                className = {classes.Button}
+                onClick = {this.onCodeChange}
+                disabled = {!this.state.valid}
+                 > See your result</button>
                {this.renderSuggestions()}
               {validationError}
+              
                 </div>
-                
+              
+                <Cities countryCode = {this.state.countryCode} />
             </Aux>
             
         )
