@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Aux from '../../hoc/Plik/Plik'
 import classes from "./InputField.css"
-
+// import Cities from '../../Components/Cities/Cities'
 class InputField extends Component{
-    constructor (props) {
+    cconstructor (props) {
         super(props);
         this.items = [
             'Poland',
