@@ -23,7 +23,8 @@
     cursor: poniter;
 }
 
-.Cities li:hover {
+.Cities li:hover
+ {
     text-decoration: underline;
    
 }
@@ -39,4 +40,8 @@
    left: 50%;
    margin-right: -50%;
    transform: translate(-50%, -50%) 
+}
+.Link {
+    text-decoration: none;
+    color: inherit;
 }

@@ -126,7 +126,7 @@ class InputField extends Component{
             
         const {text} = this.state;
    
-    console.log(this.state)
+    
         return (
             <Aux>
                 

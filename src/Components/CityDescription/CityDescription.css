@@ -1,0 +1,33 @@
+.Cities {
+    height: 30em;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+ .Link {
+    text-decoration: none;
+    color: inherit;
+}
+.Link:hover {
+    text-decoration: underline;
+}
+h1 {
+    height: 15em;
+    margin-top: 20px;
+}
+.Cities .Link,
+h1,
+p {
+    margin: 0;
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+p {
+    height: 10em;
+
+}

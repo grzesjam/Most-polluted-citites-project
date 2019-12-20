@@ -1,6 +1,8 @@
 import React, {Component}from 'react';
 import classes from './Cities.css';
 import Spinner from '../UI/Spinner/Spinner'
+
+import {Link} from 'react-router-dom';
 class Cities extends Component {
 
     
@@ -52,8 +54,9 @@ class Cities extends Component {
 
     render() {
         
-     
        const {isLoaded, cities} = this.state;
+  
+     
     let Info = null
       if(cities.length > 0)
       {
@@ -65,16 +68,30 @@ class Cities extends Component {
        }
        
         return (
-           <div className = {classes.Cities}>
+         
+         <div className = {classes.Cities}>
              <ul>
                {cities.map(city => (
-                 <li key = {city.value}>
-                   {city.city}
+                 <li key = {city.value}><Link
+                 className = {classes.Link}
+                 to = {{
+                  pathname: '/description/',
+                  search : `?cityName=${city.city}`
+                  }}>
+                 {city.city}
+                 </Link>
+                   
                  </li>
                ))}
              </ul>
              {Info}
+           
+             
            </div>
+     
+             
+ 
+          
         )
   
        
