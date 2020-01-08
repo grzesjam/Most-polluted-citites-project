@@ -30,7 +30,7 @@ class CityDescription extends Component {
                 
             <div className = {classes.Cities}>
             <h1>City Description</h1>
-               <p>{results.snippet}</p> 
+               <p dangerouslySetInnerHTML={{ __html: results.snippet}} /> 
                
                <Link
                 to = "/"
